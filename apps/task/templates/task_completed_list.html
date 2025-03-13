@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Task
+{% endblock %}
+
+{% block content %}
+    <h1>Task Completed</h1>
+
+    <table>
+        <tr>
+            <th>TASK</th>
+            <th>ACTIONS</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                {% if task.important %}
+                    <td><strong>{{ task.title }}</strong></td>
+                {% else %}
+                    <td>{{ task.title }}</td>
+                {% endif %}
+                <td>
+                    <a href="{% url 'task_detail' task.id %}">
+                        <button type="button">Detail</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

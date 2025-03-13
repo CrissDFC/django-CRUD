@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    task detail
+{% endblock %}
+
+{% block content %}
+    <h1>Detalle de la tarea</h1>
+
+    <h2>{{ task.title }}</h2>
+    <p>{{ task.description }}</p>
+    <p>Created by {{ task.user }}</p>
+
+    {% if task.date_complete != None %}
+    	<p>Task completed on: {{ task.date_complete }} </p>
+    {% endif %}
+
+    {% if task.date_complete is None %}
+        <form action="{% url 'task_completed' task.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">
+                Completed
+            </button>
+        </form>
+    {% endif %}
+
+    <form action="{% url 'task_delete' task.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">
+            Delete
+        </button>
+    </form>
+{% endblock %}
