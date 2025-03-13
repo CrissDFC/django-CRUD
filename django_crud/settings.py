@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'apps.task',
 ]
 
 NPM_BIN_PATH = "/opt/homebrew/bin/npm"
